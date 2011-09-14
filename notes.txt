@@ -5,3 +5,11 @@ metrics
   
   ...some way of judging what's getting done in parallel
   
+goals:
+  - swap algorithms and data structures and see efficiency impact.
+    ideally this would be a score rather than raw time measurements...
+      - think query plan
+      - costs are assigned to various operations - 
+        - vector access
+        - copy operations, etc
+      - test-drive things like update-in vs assoc-in based on cost
