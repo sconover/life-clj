@@ -1,0 +1,7 @@
+metrics
+  - total cells
+  - cells evaluated
+  - evaluated / total
+  
+  ...some way of judging what's getting done in parallel
+  
