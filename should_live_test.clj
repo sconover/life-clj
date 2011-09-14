@@ -4,34 +4,34 @@
 (load "life")
 
 (deftest any-live-cell-with-fewer-than-two-live-neighbors-dies--as-if-caused-by-underpopulation
-  (is (= false 
-    (should-live? true (repeat 8 false)) ))
+  (is (= :dead 
+    (should-live? :alive (repeat 8 :dead)) ))
 
-  (is (= false 
-    (should-live? true (conj [true] (repeat 7 false))) )) )
+  (is (= :dead 
+    (should-live? :alive (conj [:alive] (repeat 7 :dead))) )) )
     
 (deftest any-live-cell-with-two-or-three-live-neighbors-lives-on-to-the-next-generation
-  (is (= true
-    (should-live? true (conj [true true] (repeat 6 false))) ))
+  (is (= :alive
+    (should-live? :alive (conj [:alive :alive] (repeat 6 :dead))) ))
 
-  (is (= true 
-    (should-live? true (conj [true true true] (repeat 5 false))) )) )
+  (is (= :alive 
+    (should-live? :alive (conj [:alive :alive :alive] (repeat 5 :dead))) )) )
     
 (deftest any-live-cell-with-more-than-three-live-neighbours-dies--as-if-by-overcrowding
-  (is (= false 
-    (should-live? true (conj [true true true true] (repeat 4 false))) ))
+  (is (= :dead 
+    (should-live? :alive (conj [:alive :alive :alive :alive] (repeat 4 :dead))) ))
     
-  (is (= false 
-    (should-live? true (conj [true true true true true] (repeat 3 false))) )) )
+  (is (= :dead 
+    (should-live? :alive (conj [:alive :alive :alive :alive :alive] (repeat 3 :dead))) )) )
     
 (deftest any-dead-cell-with-exactly-three-live-neighbours-becomes-a-live-cell--as-if-by-reproduction
-  (is (= false
-    (should-live? false (conj [true true] (repeat 6 false))) ))
+  (is (= :dead
+    (should-live? :dead (conj [:alive :alive] (repeat 6 :dead))) ))
 
-  (is (= true
-    (should-live? false (conj [true true true] (repeat 5 false))) ))
+  (is (= :alive
+    (should-live? :dead (conj [:alive :alive :alive] (repeat 5 :dead))) ))
     
-  (is (= false
-    (should-live? false (conj [true true true true] (repeat 4 false))) )))
+  (is (= :dead
+    (should-live? :dead (conj [:alive :alive :alive :alive] (repeat 4 :dead))) )))
   
 (run-tests 'life)
